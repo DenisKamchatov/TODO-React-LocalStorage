@@ -32,12 +32,6 @@ export const LeftColumn = () => {
             )
         }
     }
-    // Дописать функциб открытия select
-    // const openSelect = () => {
-    //     if (selectInput && selectInput.current) {
-            
-    //     }
-    // }
 
     return (
         <div className={classes['form']}>
