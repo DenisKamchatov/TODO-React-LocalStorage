@@ -18,6 +18,24 @@
         &:focus {
             outline: 1px solid #217346;
         }
+        &::placeholder {
+            color: #f3f3f3;
+        }
+    }
+
+    &__input-name--light {
+        background: none;
+        border: 1px solid #616161;
+        color: #313131;
+        border-radius: 3px;
+        padding: 10px;
+
+        &:focus {
+            outline: 1px solid #217346;
+        }
+        &::placeholder {
+            color: #313131;
+        }
     }
 
     &__input-number {
@@ -27,51 +45,96 @@
         border-radius: 3px;
         margin: 10px 0 0 0;
         padding: 10px;
+        width: -webkit-fill-available;
 
         &:focus {
             outline: 1px solid #217346;
         }
 
-        // &::-webkit-outer-spin-button,
-        // &::-webkit-inner-spin-button {
-        //     -webkit-appearance: none;
-        //     margin: 0;
-        // }
-    }
+        &::placeholder {
+            color: #f3f3f3;
+        }
 
-    &__input-select {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+    &__input-number--light {
         background: none;
         border: 1px solid #616161;
-        color: #f3f3f3;
+        color: #313131;
+        border-radius: 3px;
         margin: 10px 0 0 0;
         padding: 10px;
-        border-radius: 5px;
-
+        width: -webkit-fill-available;
 
         &:focus {
             outline: 1px solid #217346;
         }
-        option {
-            background-color: #313131;
-            color: #f3f3f3;
-            border-radius: 0px;
 
+        &::placeholder {
+            color: #313131;
         }
-        
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
+    &__number-block {
+        position: relative;
+        width: 100%;
+    }
+    &__arrow-down {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        margin: -14px 0 0 0;
+        transform: rotate(180deg);
+        height: 37px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        background-color: #cccccc;
+        cursor: pointer;
+    }
+    &__arrow-up {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin: -14px 0 0 0;
+        height: 37px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        background-color: #cccccc;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+    }
+    &__input-select-label {
+        position: absolute;
+        right: 0;
+        top: 0;
+        pointer-events: none;
+    }    
 
     &__input-checkbox {
         margin: 10px 0 0 0;
     }
 
     &__input-checkbox-label {
-        color: #f3f3f3;
+        // color: #f3f3f3;
         margin: 10px 0 0 5px;
     }
 
     &__button {
         background-color: #616161;
-        color: #f3f3f3;
+        // color: #f3f3f3;
         margin: 10px 0 0 0;
         width: 100%;
         padding: 10px;
@@ -86,3 +149,111 @@
     }
 }
 
+.select-block {
+    position: relative;
+
+    &__input-select {
+        background: none;
+        border: 1px solid #616161;
+        color: #f3f3f3;
+        margin: 10px 0 0 0;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+    
+    
+        &:focus {
+            outline: 1px solid #217346;
+        }
+        option {
+            background-color: #313131;
+            color: #f3f3f3;
+            border-radius: 0px;
+    
+        }
+        
+    }
+    &__arrow-down {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin: -14.5px 0 0 0;
+        background-color: #616161;
+        width: 30px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 3px 3px 0;
+        pointer-events: none;
+    }
+}
+
+.select-block--light {
+    position: relative;
+
+    .select-block__input-select {
+        background: none;
+        border: 1px solid #616161;
+        color: #313131;
+        margin: 10px 0 0 0;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+    
+    
+        &:focus {
+            outline: 1px solid #217346;
+        }
+        option {
+            background-color: #313131;
+            color: #f3f3f3;
+            border-radius: 0px;
+    
+        }
+        
+    }
+    .select-block__arrow-down {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin: -14.5px 0 0 0;
+        background-color: #cccccc;
+        width: 30px;
+        height: 38.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 3px 3px 0;
+        pointer-events: none;
+    }
+}
+
+.theme {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+
+    &__switch {
+        background-color: #247f4c;
+        width: 40px;
+        height: 20px;
+        border-radius: 9px;
+        position: relative;
+
+        &-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #313131;
+            position: absolute;
+            top: 50%;
+            left: 4px;
+            margin: -6px 0 0 0;
+        }
+    }
+    &__text {
+        margin: 0 0 0 15px;
+        // color: #f3f3f3;
+    }
+}

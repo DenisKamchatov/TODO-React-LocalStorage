@@ -19,7 +19,9 @@ interface FormData {
   setEmployedFunc: (value: boolean) => void,
   setPersonsFunc: (value: Persons) => void,
   deletePersonsFunc: (value: number) => void,
-  deletedPersonIndex: number
+  deletedPersonIndex: number,
+  darkMode?: boolean,
+  setDarkModeFunc: (value: boolean) => void
 }
 
 export interface Persons {
@@ -31,7 +33,8 @@ export interface Persons {
 
 interface localPersons {
   persons: Array<Persons>,
-  setDeletedPersonFunc: (value: number) => void
+  setDeletedPersonFunc: (value: number) => void,
+  darkMode: boolean
 }
 
 const defaultState = {
@@ -42,6 +45,7 @@ const defaultState = {
   setEmployedFunc: () => 0,
   setPersonsFunc: () => 0,
   deletePersonsFunc: () => 0,
+  setDarkModeFunc: () => 0,
   deletedPersonIndex: 0
 }
 
@@ -50,11 +54,12 @@ const defaultStatePersons = {
     {
       name: '',
       select: Select.subscribed,
-      number: 0,
-      employed: true
+      number: 18,
+      employed: false
     }
   ],
-  setDeletedPersonFunc: () => 0
+  setDeletedPersonFunc: () => 0,
+  darkMode: true
 }
 
 
@@ -70,6 +75,7 @@ function App() {
   const [number, setNumber] = useState(0)
   const [employed, setEmployed] = useState(true)
   const [deletedPersonIndex, setDeletedPersonIndex] = useState(0)
+  const [darkMode, setDarkMode] = useState(true)
 
   let localStoragePersons = localStorage.getItem('persons')
   const [persons, setPersons] = useState(localStoragePersons ? JSON.parse(localStoragePersons) as Array<Persons> : [] as Array<Persons>)
@@ -81,7 +87,9 @@ function App() {
     setSelect(value)
   }
   const setNumberFunc = (value: number) => {
-    setNumber(value)
+    if (value >= 18) {
+      setNumber(value)
+    }
   }
   const setEmployedFunc = (value: boolean) => {
     setEmployed(value)
@@ -108,8 +116,19 @@ function App() {
     setPersons(personsArray)
   }
 
+  const setDarkModeFunc = (isDarkMode: boolean) => {
+    console.log(isDarkMode)
+    setDarkMode(isDarkMode)
+  }
+
   return (
-      <div className="body">
+      <div 
+        className="body" 
+        style={{
+          backgroundColor: darkMode ? '#313131' : '#ffffff',
+          color: darkMode ? '#f3f3f3' : '#313131'
+        }}
+      >
         <Context.Provider value={{
           name, 
           setNameFunc, 
@@ -121,13 +140,16 @@ function App() {
           setEmployedFunc,
           setPersonsFunc,
           deletePersonsFunc,
-          deletedPersonIndex
+          deletedPersonIndex,
+          darkMode,
+          setDarkModeFunc
         }}>
           <LeftColumn />
         </Context.Provider>
         <ContextPersons.Provider value={{
           persons,
-          setDeletedPersonFunc
+          setDeletedPersonFunc,
+          darkMode,
         }}>
           <RightColumn />
         </ContextPersons.Provider>
