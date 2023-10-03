@@ -1,3 +1,5 @@
+### TODO with React, Typescript, LocalStorage and SCSS modules 
+
 Versions: 
 1) Node - v18.17.1
 2) React - v18.2.0
